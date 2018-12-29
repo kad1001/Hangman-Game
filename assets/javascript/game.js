@@ -1,44 +1,63 @@
-// $(document).ready(function() {
+// global vars
+// ====================
+// create an array of words
+var words = ["dog", "pug", "bark", "cute", "wag"];
+// computer selects random word from ['words'] and stores it in 'computerPick'
+var computerPick = words[Math.floor(Math.random() * words.length)];
+var rightWord = [];
+var wrongWord = [];
+var underScore = [];
 
-// Initial Variables
+// dom manipulation
+console.log(computerPick);
+var docUS = document.getElementsByClassName("underScore");
+var docRG = document.getElementsByClassName("rightGuess");
+var docWG = document.getElementsByClassName("wrongGuess");
+var docL = document.getElementsByClassName("livesScore");
 
+// main
+// ============================
 
+// create underscores based on length of word
+var generateUnderscore = () => {
+    for(var i = 0; i < computerPick.length; i++) {
+        underScore.push("_");
+    }
+    return underScore;
+}
 
-
-// messages to be displayed
-// var messages = ["Aw sorry u lose", "u win", "play again?"];
-// initial lives
-// var lives = 8;
-// decrease 'lives' by 1 for each wrong 'guessedWord' (try accessing them via '.tryLetters') until it reaches 0
-// for (let x = 8; x < 8; x--);
-
-
-
-
-// Here we create the on click event that gets the user's pick
-// $(".btn-choice").on("click", function() {
-
-// store user's letter guess in '#guessWord' into var guessedWord
-// var guessedWord = $("#guessWord");
-// if 'guessedWord' is in 'computerPick':
-// var y = computerPick.includes(guessedWord);
-// display 'guessedWord' in '#hangmanContainer'
-// if (y === true);
-//     $("#hangmanContainer").append(guessedWord);
-// // if 'guessedWord' is not in 'computerPick', display 'guessedWord' in '.tryLetters (.guessingWordContainer?)'
-// if (y === false);
-//     $(".tryLetters").append(guessedWord);
-
+console.log(generateUnderscore())
 
 
-// when 'lives' == 0: display 'messages[0, 2]' in <p>, create new buttons y/n 
-// if 'lives' >= 0, display 'messages[1, 2]' in <p>, create new buttons y/n 
+// get user's guess
+document.addEventListener('keypress', (event) => {
+    var keyword = String.fromCharCode(event.keyCode);
+    // if user's guess is right
+    if(computerPick.indexOf(keyword) > -1) {
+        // push the right words to 'rightWord' array
+        rightWord.push(keyword);
+        // replace underscore with right letter
+        underScore[computerPick.indexOf(keyword)] = keyword;
+        docUS[0].innerHTML = underScore.join(" ");
+        docRG[0].innerHTML = rightWord; 
+        // checks to see if user word matches guesses
+        if(underScore.join("") == computerPick) {
+            alert("you win!");
+        }
+    }
+    else {
+        wrongWord.push(keyword);
+        // push wrong words to [wrongWord]
+        docWG[0].innerHTML = wrongWord;
+        // decreases lives starting at 8 by 1 for every new wrongWord
+        //     var livesCounter = () => {
+        //         for(var x = 0; x < 8; x--) {
 
+        //         }
+        //     }
 
+        //     document.getElementsByClassName("livesScore").innerHTML = (livesCounter);
+        //     console.log(livesCounter);
+        }
 
-
-
-
-
-// });
-// });
+});
