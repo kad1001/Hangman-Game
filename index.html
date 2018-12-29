@@ -18,16 +18,10 @@
             <p>Enter a letter to begin:</p>
             <input type="text" id="guessWord">
         </header>
-        <div class="underScore">_ _ _ _</div>
+        <div class="underScore"></div>
         <br>
         <div class="rightGuess">Right guess</div>
-        <div class="wrongGuess">Wrong guess</div>
-        <div id="hangmanContainer"></div>
-        <div class="guessingWordContainer">
-            <ul class="tryLetters">
-                <li></li>
-            </ul>
-        </div>
+        <div class="wrongGuess">Wrong guess</div> 
     </div>
 
 
@@ -37,7 +31,7 @@
 
 
 // create an array of words
-var words = ["dog", "puppy", "labrador", "pug", "woof", "bark"];
+var words = ["dog", "pug", "bark", "cute", "wag"];
 // computer selects random word from ['words'] and stores it in 'computerPick'
 var computerPick = words[Math.floor(Math.random() * words.length)];
 var rightWord = [];
@@ -56,10 +50,13 @@ var docWG = document.getElementsByClassName("wrongGuess");
 // create underscores based on length of word
 var generateUnderscore = () => {
     for(var i = 0; i < computerPick.length; i++) {
-        underScore.push('_');
+        underScore.push("_");
     }
     return underScore;
 }
+
+console.log(generateUnderscore())
+
 
 // get user's guess
 document.addEventListener('keypress', (event) => {
@@ -83,9 +80,5 @@ document.addEventListener('keypress', (event) => {
         docWG[0].innerHTML = wrongWord;
     }
 });
-// check if guess is correct
-// if right, push to right array
-// if wrong, push to wrong array
-
  </script>
 </html>
