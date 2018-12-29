@@ -17,7 +17,7 @@ console.log(computerPick);
 var docUS = document.getElementsByClassName("underScore");
 var docRG = document.getElementsByClassName("rightGuess");
 var docWG = document.getElementsByClassName("wrongGuess");
-var showLives = document.getElementsByClassName("livesScore");
+// var showLives = document.getElementsByClassName("livesScore");
 
 
 // main
@@ -32,7 +32,6 @@ var generateUnderscore = () => {
 }
 
 console.log(generateUnderscore())
-
 
 // get user's guess
 document.addEventListener('keypress', (event) => {
@@ -51,30 +50,19 @@ document.addEventListener('keypress', (event) => {
             console.log("you win!");
         }
     }
+
+    // if user's guess is wrong
     else {
         wrongWord.push(keyword);
         // push wrong words to [wrongWord]
         docWG[0].innerHTML = wrongWord;
-        wrongWord.forEach(function(element) {
-            console.log(element);
     
-        // decreases lives starting at 8 by 1 for every new wrongWord
+        // //  decreases lives starting at 8 by 1 for every new wrongWord
         //     document.getElementsByClassName("livesScore").innerHTML = (livesCounter);
         //     console.log(livesCounter);
-        })
+        
     }
     // Show lives
-   comments = function () {
-    showLives.innerHTML = "You have " + lives + " lives";
-    if (lives < 1) {
-      showLives.innerHTML = "Game Over";
-    }
-    for (var i = 0; i < geusses.length; i++) {
-      if (counter + space === geusses.length) {
-        showLives.innerHTML = "You Win!";
-      }
-    }
-  }
 
 
 });
