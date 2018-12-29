@@ -42,7 +42,7 @@ function startGame() {
 
     function winLose() {
         if(underScore.join("") == computerPick) {
-            console.log("you win!");
+            alert("you win!");
             }
         else if(guessesLeft === 0) {
             alert("loser");
