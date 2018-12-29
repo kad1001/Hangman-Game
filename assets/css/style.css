@@ -1,8 +1,39 @@
-.container {
-    
+header {
+    border: 3px solid pink;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto;
+    height: 150px;
+    width: 80%;
 }
 
 
+.underScore {
+    border: 3px solid pink;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto;
+    height: 150px;
+    width: 80%;
+}
+
+.rightGuess {
+    border: 3px solid pink;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto;
+    height: 150px;
+    width: 80%;
+}
+
+.wrongGuess {
+    border: 3px solid pink;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto;
+    height: 150px;
+    width: 80%;
+}
 #guessWord {
     float: left;
     text-align: center;

@@ -4,17 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link type="text/javascript" href="assets/javascript/game.js">
+    <!-- <link type="text/javascript" href="assets/javascript/game.js"> -->
+    <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>Hangdog</title>
 </head>
 <body>
-    <div class="container"></div>
-        <h1>Welcome to Hangdog</h1>
-        <p>Enter a letter to begin:</p>
-        <input type="text" id="guessWord">
-        <button class="btn-choice" id="btnSubmit">Submit</button>
+</body>
+    <div class="container">
+        <header>
+            <h1>Welcome to Hangdog</h1>
+            <p>Enter a letter to begin:</p>
+            <input type="text" id="guessWord">
+        </header>
+        <div class="underScore">_ _ _ _</div>
+        <br>
+        <div class="rightGuess">Right guess</div>
+        <div class="wrongGuess">Wrong guess</div>
         <div id="hangmanContainer"></div>
         <div class="guessingWordContainer">
             <ul class="tryLetters">
@@ -23,5 +30,62 @@
         </div>
     </div>
 
-</body>
+
+<script type="text/javascript">
+// global vars
+// ====================
+
+
+// create an array of words
+var words = ["dog", "puppy", "labrador", "pug", "woof", "bark"];
+// computer selects random word from ['words'] and stores it in 'computerPick'
+var computerPick = words[Math.floor(Math.random() * words.length)];
+var rightWord = [];
+var wrongWord = [];
+var underScore = [];
+
+// dom manipulation
+console.log(computerPick);
+var docUS = document.getElementsByClassName("underScore");
+var docRG = document.getElementsByClassName("rightGuess");
+var docWG = document.getElementsByClassName("wrongGuess");
+
+// main
+// ============================
+
+// create underscores based on length of word
+var generateUnderscore = () => {
+    for(var i = 0; i < computerPick.length; i++) {
+        underScore.push('_');
+    }
+    return underScore;
+}
+
+// get user's guess
+document.addEventListener('keypress', (event) => {
+    var keyword = String.fromCharCode(event.keyCode);
+// if user's guess is right
+    if(computerPick.indexOf(keyword) > -1) {
+        // push the right words to 'rightWord' array
+        rightWord.push(keyword);
+        // replace underscore with right letter
+        underScore[computerPick.indexOf(keyword)] = keyword;
+        docUS[0].innerHTML = underScore.join(" ");
+        docRG[0].innerHTML = rightWord; 
+        // checks to see if user word matches guesses
+        if(underScore.join("") == computerPick) {
+            alert("you win!");
+        }
+    }
+    else {
+        wrongWord.push(keyword);
+        // push wrong words to [wrongWord]
+        docWG[0].innerHTML = wrongWord;
+    }
+});
+// check if guess is correct
+// if right, push to right array
+// if wrong, push to wrong array
+
+ </script>
 </html>
