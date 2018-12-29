@@ -10,7 +10,7 @@ header {
 
 .underScore {
     border: 3px solid pink;
-    font-size: 20px;
+    font-size: 40px;
     text-align: center;
     margin: 0 auto;
     height: 150px;
@@ -24,6 +24,7 @@ header {
     margin: 0 auto;
     height: 150px;
     width: 80%;
+    display: none;
 }
 
 .wrongGuess {
@@ -35,16 +36,20 @@ header {
     width: 80%;
 }
 
-.livesScore {
+/* .livesScore {
     border: 3px solid pink;
     font-size: 20px;
     text-align: center;
     margin: 0 auto;
     height: 150px;
     width: 80%;
-}
+} */
 
 .lose {
     background-image: url(https://i.kinja-img.com/gawker-media/image/upload/s--XpolLnes--/c_fit,f_auto,fl_progressive,q_80,w_636/wdf87lzrejsfrf1d6b0t.jpg);
+    display: none;
+}
 
+.win {
+    background-image: url(https://vignette.wikia.nocookie.net/scream-queens/images/f/f6/O-HAPPY-DOG-DAY-OF-HAPPINESS-facebook.jpg/revision/latest?cb=20150226233059)
 }

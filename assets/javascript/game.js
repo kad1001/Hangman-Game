@@ -7,13 +7,18 @@ var computerPick = words[Math.floor(Math.random() * words.length)];
 var rightWord = [];
 var wrongWord = [];
 var underScore = [];
+// lives
+var lives;
+// count correct guesses
+var counter;
 
-// dom manipulation
+// dom manipulation/get elements
 console.log(computerPick);
 var docUS = document.getElementsByClassName("underScore");
 var docRG = document.getElementsByClassName("rightGuess");
 var docWG = document.getElementsByClassName("wrongGuess");
-var docL = document.getElementsByClassName("livesScore");
+var showLives = document.getElementsByClassName("livesScore");
+
 
 // main
 // ============================
@@ -40,24 +45,36 @@ document.addEventListener('keypress', (event) => {
         underScore[computerPick.indexOf(keyword)] = keyword;
         docUS[0].innerHTML = underScore.join(" ");
         docRG[0].innerHTML = rightWord; 
+
         // checks to see if user word matches guesses
         if(underScore.join("") == computerPick) {
-            alert("you win!");
+            console.log("you win!");
         }
     }
     else {
         wrongWord.push(keyword);
         // push wrong words to [wrongWord]
         docWG[0].innerHTML = wrongWord;
+        wrongWord.forEach(function(element) {
+            console.log(element);
+    
         // decreases lives starting at 8 by 1 for every new wrongWord
-        //     var livesCounter = () => {
-        //         for(var x = 0; x < 8; x--) {
-
-        //         }
-        //     }
-
         //     document.getElementsByClassName("livesScore").innerHTML = (livesCounter);
         //     console.log(livesCounter);
-        }
+        })
+    }
+    // Show lives
+   comments = function () {
+    showLives.innerHTML = "You have " + lives + " lives";
+    if (lives < 1) {
+      showLives.innerHTML = "Game Over";
+    }
+    for (var i = 0; i < geusses.length; i++) {
+      if (counter + space === geusses.length) {
+        showLives.innerHTML = "You Win!";
+      }
+    }
+  }
+
 
 });
