@@ -11,6 +11,7 @@ var wins = 0;
 var loss = 0;
 var guessesLeft = 9;
 var winCounter;
+var mySound;
 
 // dom manipulation/get elements
 console.log(computerPick);
@@ -39,9 +40,11 @@ function startGame() {
 
     // html
     document.getElementById("guesses-left").textContent = guessesLeft;
+    mySound = new sound("dogs.mp3");
 
     function winLose() {
         if(underScore.join("") == computerPick) {
+            mySound.play();
             alert("you win!");
             }
         else if(guessesLeft === 0) {
@@ -84,6 +87,20 @@ function startGame() {
         // Show lives
 
     })
+    function sound(src) {
+        this.sound = document.createElement("audio");
+        this.sound.src = src;
+        this.sound.setAttribute("preload", "auto");
+        this.sound.setAttribute("controls", "none");
+        this.sound.style.display = "none";
+        document.body.appendChild(this.sound);
+        this.play = function(){
+          this.sound.play();
+        }
+        this.stop = function(){
+          this.sound.pause();
+        }
+      }
 };
 // main
 // ========
