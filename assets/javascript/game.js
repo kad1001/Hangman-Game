@@ -77,9 +77,8 @@ function startGame() {
             // //  decreases lives starting at 8 by 1 for every new wrongWord
             // push wrong words to [wrongWord]
             docWG[0].innerHTML = wrongWord;
-
-            //     document.getElementsByClassName("livesScore").innerHTML = (livesCounter);
             document.getElementById("guesses-left").textContent = guessesLeft;
+            winLose();
             
         }
         // Show lives
