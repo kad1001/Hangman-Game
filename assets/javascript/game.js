@@ -12,6 +12,7 @@ var loss = 0;
 var guessesLeft = 9;
 var winCounter;
 var mySound;
+var emptyList = [];
 
 // dom manipulation/get elements
 console.log(computerPick);
@@ -48,13 +49,20 @@ function startGame() {
             alert("you win!");
             }
         else if(guessesLeft === 0) {
-            alert("loser");
+            alert("u killed the dang! dog!");
         }
     }
 
+
     // get user's guess
     document.addEventListener('keypress', (event) => {
+        // stores letter from keycode event into keyword
         var keyword = String.fromCharCode(event.keyCode);
+        // append keyword to empty list
+        var emptyList
+        }
+
+        // if 
         // if user's guess is right
         if(computerPick.indexOf(keyword) > -1) {
             for(var i = 0; i < computerPick.length; i++) {
@@ -74,6 +82,7 @@ function startGame() {
         }
 
         // if user's guess is wrong
+
         else {
             guessesLeft--;
             wrongWord.push(keyword);
@@ -82,6 +91,12 @@ function startGame() {
             docWG[0].innerHTML = wrongWord;
             document.getElementById("guesses-left").textContent = guessesLeft;
             winLose();
+            console.log(wrongWord);
+            // var a = keyword.indexOf(wrongWord);
+            // console.log(a)
+            // if(a > -1) {
+            //     alert("sorry")
+            // }
             
         }
         // Show lives
