@@ -9,21 +9,18 @@ var wrongWord = [];
 var underScore = [];
 var wins = 0;
 var loss = 0;
-var guessesLeft = 9;
 var winCounter;
-var mySound;
-var emptyList = [];
+var winSound;
+var loseSound;
 
 // dom manipulation/get elements
 console.log(computerPick);
 var docUS = document.getElementsByClassName("underScore");
 var docRG = document.getElementsByClassName("rightGuess");
 var docWG = document.getElementsByClassName("wrongGuess");
-// var showLives = document.getElementsByClassName("livesScore");
-
 
 // main
-// ============================
+// ===================================
 
 function startGame() {
     // create underscores based on length of word
@@ -37,18 +34,20 @@ function startGame() {
     console.log(generateUnderscore())
 
     // reset
-    guessesLeft = 10;
+    guessesLeft = 6;
 
     // html
     document.getElementById("guesses-left").textContent = guessesLeft;
-    mySound = new sound("dogs.mp3");
+    winSound = new sound("dogs.mp3");
+    loseSound = new sound("explode.mp3");
 
     function winLose() {
         if(underScore.join("") == computerPick) {
-            mySound.play();
+            winSound.play();
             alert("you win!");
             }
         else if(guessesLeft === 0) {
+            loseSound.play();
             alert("u killed the dang! dog!");
         }
     }
@@ -59,11 +58,9 @@ function startGame() {
         // stores letter from keycode event into keyword
         var keyword = String.fromCharCode(event.keyCode);
         // append keyword to empty list
-        var emptyList
-        }
 
-        // if 
         // if user's guess is right
+        // can also do includes
         if(computerPick.indexOf(keyword) > -1) {
             for(var i = 0; i < computerPick.length; i++) {
                 if(computerPick[i] === keyword) {
@@ -82,22 +79,18 @@ function startGame() {
         }
 
         // if user's guess is wrong
-
         else {
+            if(wrongWord.includes(keyword)) {
+                alert('You already guessed that! Try again')
+            }
+            else {
             guessesLeft--;
-            wrongWord.push(keyword);
-            // //  decreases lives starting at 8 by 1 for every new wrongWord
             // push wrong words to [wrongWord]
+            wrongWord.push(keyword);
             docWG[0].innerHTML = wrongWord;
             document.getElementById("guesses-left").textContent = guessesLeft;
             winLose();
-            console.log(wrongWord);
-            // var a = keyword.indexOf(wrongWord);
-            // console.log(a)
-            // if(a > -1) {
-            //     alert("sorry")
-            // }
-            
+            } 
         }
         // Show lives
 
@@ -115,8 +108,9 @@ function startGame() {
         this.stop = function(){
           this.sound.pause();
         }
-      }
-};
+    }
+}
+
 // main
 // ========
 startGame();
