@@ -1,23 +1,24 @@
-// global vars
-// ====================
-// create an array of words
-var words = ["dog", "pug", "bark", "cute", "wag"];
-// computer selects random word from ['words'] and stores it in 'computerPick'
-var computerPick = words[Math.floor(Math.random() * words.length)];
-var rightWord = [];
-var wrongWord = [];
-var underScore = [];
-var wins = 0;
-var loss = 0;
-var winCounter;
-var winSound;
-var loseSound;
 
-// dom manipulation/get elements
-console.log(computerPick);
-var docUS = document.getElementsByClassName("underScore");
-var docRG = document.getElementsByClassName("rightGuess");
-var docWG = document.getElementsByClassName("wrongGuess");
+    // global vars
+    // ====================
+    // create an array of words
+    var words = ["dog", "pug", "bark", "cute", "wag"];
+    // computer selects random word from ['words'] and stores it in 'computerPick'
+    var computerPick = words[Math.floor(Math.random() * words.length)];
+    var rightWord = [];
+    var wrongWord = [];
+    var underScore = [];
+    var wins = 0;
+    var loss = 0;
+    var winCounter;
+    var winSound;
+    var loseSound;
+
+    // dom manipulation/get elements
+    console.log(computerPick);
+    var docUS = document.getElementsByClassName("underScore");
+    var docRG = document.getElementsByClassName("rightGuess");
+    var docWG = document.getElementsByClassName("wrongGuess");
 
 // main
 // ===================================
@@ -45,10 +46,12 @@ function startGame() {
         if(underScore.join("") == computerPick) {
             winSound.play();
             alert("you win!");
+            location.reload();
             }
         else if(guessesLeft === 0) {
             loseSound.play();
             alert("u killed the dang! dog!");
+            location.reload();
         }
     }
 
@@ -109,7 +112,7 @@ function startGame() {
           this.sound.pause();
         }
     }
-}
+};
 
 // main
 // ========
