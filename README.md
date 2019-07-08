@@ -1,2 +1,12 @@
-# word-guess-game
-bootcamp- enter letters to guess a word (or not)
+# Hangman
+Guess the correct dog-related word in a certain amount of attempts.
+
+<h3>Technologies Used:</h3>
+
+<ul>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>jQuery</li>
+    <li>Javascript</li>
+  
+</ul>
